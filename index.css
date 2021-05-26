@@ -1,0 +1,69 @@
+body{
+    background: url("https://en.cryptonomist.ch/wp-content/uploads/2021/04/bitcoin-prediction-1.jpg");
+    min-height: 500px;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+h1, h2, p {
+    text-align: center;
+    color: whitesmoke; 
+}
+
+.tile {
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.589);
+    border: rgba(252, 252, 252, 0.705) solid 1px;
+    padding: 1rem;
+    width: 200px;
+    display: inline-grid;
+    margin: 1rem 2rem;
+    box-shadow: 3px 4px black;
+    block-size: fit-content;
+    border-radius: 10px;
+  }
+
+  .single {
+    margin: auto;
+    text-align: center;
+    background-color: rgba(0, 0, 0, 0.589);
+    border: rgba(252, 252, 252, 0.705) solid 1px;
+    padding: 1rem;
+    width: 600px;
+    box-shadow: 3px 4px black;
+    block-size: fit-content;
+    border-radius: 10px;
+  }
+
+  .logo {
+    justify-self: center;
+    height: 100px;
+    width: auto;
+  }
+
+  button { 
+    position: relative;
+    background-color: #000000;
+    /* border: none; */
+    /* border-radius: 5px; */
+    height: 30px;
+    width: max-content;
+    color: whitesmoke;
+    font-size: 18px;
+    justify-self: center;
+  }
+
+  button:hover {
+    background-color: whitesmoke;
+    border: #4e4c4d solid 1px;
+    color: #4e4c4d;
+  }
+
+  .details {
+    text-align: left;
+    color: whitesmoke;
+    text-transform: capitalize;
+
+  }
