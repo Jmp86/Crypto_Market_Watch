@@ -72,3 +72,17 @@ h2, p {
     text-transform: capitalize;
 
   }
+
+  form {
+    text-align: center;
+    background-color: rgb(0, 0, 0);
+    border: rgba(252, 252, 252, 0.705) solid 1px;
+    padding: 1rem;
+    width: 200px;
+    display: block;
+    margin: auto;
+    box-shadow: 3px 4px black;
+    block-size: fit-content;
+    border-radius: 10px;
+    color: whitesmoke;
+  }

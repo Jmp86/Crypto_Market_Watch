@@ -82,6 +82,7 @@ function loginPage(){
   signUp()
   const loginForm = document.createElement('form')
   loginForm.innerHTML += `
+  <h2>Log In</h2>
   <label>Username</label>
   <input type="text">
   <label>Password</label>
@@ -95,6 +96,7 @@ function loginPage(){
 function signUp(e){
   const signUpForm = document.createElement('form')
   signUpForm.innerHTML += `
+  <h2>Sign Up</h2>
   <label>Create Username</label>
   <input type="text">
   <label>Create Password</label>
@@ -112,8 +114,8 @@ function signUp(e){
             "Accept": "application/json"
         }, 
         body: JSON.stringify({
-          "username": e.target.children[1].value,
-          "password": e.target.children[3].value,
+          "username": e.target.children[2].value,
+          "password": e.target.children[4].value,
 
         })
     })
@@ -127,8 +129,8 @@ function signUp(e){
 
 function userLogin(e){
   e.preventDefault()
-  const username = e.target.children[1].value
-  const password = e.target.children[3].value
+  const username = e.target.children[2].value
+  const password = e.target.children[4].value
 
   fetch(`http://localhost:3000/users?name=${username}&password=${password}`)
   .then(res => res.json())
