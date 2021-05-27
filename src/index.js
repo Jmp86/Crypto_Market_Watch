@@ -4,6 +4,7 @@ const mainPage = document.getElementById('main')
 const selectedCrypto = document.getElementById('crypto')
 
 
+function renderCrypto() {
 fetch(BASE_URL)
 .then(res => res.json())
 .then((crypto) => {
@@ -11,23 +12,27 @@ fetch(BASE_URL)
     createTile(coin)
   })
 })
+}
+
+renderCrypto()
 
 function createTile(tile) {
     const newTile = document.createElement("div")
     const hTag = document.createElement('h2')
     const pTag = document.createElement('p')
-    const btnTag = document.createElement('button')
     const imgTag = document.createElement('img')
+    const aTag = document.createElement('a')
+    aTag.classList.add('click-tile')
     newTile.classList.add('tile')
     imgTag.classList.add('logo')
-    btnTag.id = tile.id
+    aTag.href = '#'
     imgTag.src = tile.image
     pTag.innerText = `Current Value : $${tile.current_price}`
-    btnTag.innerText = 'More Info'
     hTag.innerText = tile.name
-    newTile.append(hTag, imgTag, pTag, btnTag)
-    mainPage.appendChild(newTile)
-    btnTag.addEventListener('click', (e) => {
+    newTile.append(hTag, imgTag, pTag)
+    aTag.appendChild(newTile)
+    mainPage.appendChild(aTag)
+    aTag.addEventListener('click', (e) => {
       cryptoSelect(tile)
     })
   }
@@ -37,7 +42,7 @@ function createTile(tile) {
     .then(res => res.json())
     .then((crypto) => {
       moreInfo(select)
-      // console.log(select)
+      console.log(select)
     })
   
 }
@@ -48,16 +53,23 @@ function moreInfo (info) {
   const hTag = document.createElement('h2')
   const pTag = document.createElement('p')
   const imgTag = document.createElement('img')
+  const btnTag = document.createElement('button')
   singleTile.classList.add('single')
   imgTag.classList.add('logo')
   imgTag.src = info.image
   pTag.innerText = `Current Value : $${info.current_price}`
   hTag.innerText = info.name
+  btnTag.innerText = 'Return'
   for (const [key, value] of Object.entries(info)) {
     listInfo(`${key}: ${value}`);
   }
-  singleTile.append(hTag, imgTag, pTag, selectedCrypto)
-  mainPage.appendChild(singleTile)
+  btnTag.addEventListener('click', (e) => {
+    mainPage.innerHTML = ''
+    selectedCrypto.innerHTML = ''
+    renderCrypto()
+  })
+  singleTile.append(hTag, imgTag, pTag, selectedCrypto, btnTag)
+  mainPage.append(singleTile)
 }
 
 function listInfo (list){

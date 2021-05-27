@@ -1,5 +1,5 @@
 body{
-    background: url("https://en.cryptonomist.ch/wp-content/uploads/2021/04/bitcoin-prediction-1.jpg");
+    background: url("https://www.1point21gws.com/insights/wp-content/uploads/2018/12/crynew3.jpg");
     min-height: 500px;
     background-attachment: fixed;
     background-position: center;
@@ -7,12 +7,17 @@ body{
     background-size: cover;
 }
 
-h1, h2, p {
+h1 {
+  text-align: center;
+  color: black;  
+}
+
+h2, p {
     text-align: center;
     color: whitesmoke; 
 }
 
-.tile {
+.click-tile {
     text-align: center;
     background-color: rgba(0, 0, 0, 0.589);
     border: rgba(252, 252, 252, 0.705) solid 1px;
@@ -46,8 +51,8 @@ h1, h2, p {
   button { 
     position: relative;
     background-color: #000000;
-    /* border: none; */
-    /* border-radius: 5px; */
+    border: none; 
+    border-radius: 5px; 
     height: 30px;
     width: max-content;
     color: whitesmoke;
@@ -57,8 +62,8 @@ h1, h2, p {
 
   button:hover {
     background-color: whitesmoke;
-    border: #4e4c4d solid 1px;
-    color: #4e4c4d;
+    border: black solid 1px;
+    color: black;
   }
 
   .details {
