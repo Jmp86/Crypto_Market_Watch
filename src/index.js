@@ -5,16 +5,16 @@ const selectedCrypto = document.getElementById('crypto')
 
 
 function renderCrypto() {
-fetch(BASE_URL)
-.then(res => res.json())
-.then((crypto) => {
+  mainPage.innerHTML = ''
+  fetch(BASE_URL)
+  .then(res => res.json())
+  .then((crypto) => {
     crypto.forEach((coin) => {
     createTile(coin)
   })
 })
 }
 
-renderCrypto()
 
 function createTile(tile) {
     const newTile = document.createElement("div")
@@ -34,17 +34,16 @@ function createTile(tile) {
     mainPage.appendChild(aTag)
     aTag.addEventListener('click', (e) => {
       cryptoSelect(tile)
-    })
-  }
+  })
+}
 
-  function cryptoSelect(select) {
+function cryptoSelect(select) {
     fetch(BASE_URL)
     .then(res => res.json())
     .then((crypto) => {
       moreInfo(select)
       console.log(select)
-    })
-  
+  }) 
 }
 
 function moreInfo (info) {
@@ -64,7 +63,6 @@ function moreInfo (info) {
     listInfo(`${key}: ${value}`);
   }
   btnTag.addEventListener('click', (e) => {
-    mainPage.innerHTML = ''
     selectedCrypto.innerHTML = ''
     renderCrypto()
   })
@@ -78,3 +76,69 @@ function listInfo (list){
   li.innerText = list
   selectedCrypto.appendChild(li)
 }
+
+function loginPage(){
+  mainPage.innerHTML = ""
+  signUp()
+  const loginForm = document.createElement('form')
+  loginForm.innerHTML += `
+  <label>Username</label>
+  <input type="text">
+  <label>Password</label>
+  <input type="text">
+  <input type="submit">`
+
+  loginForm.addEventListener("submit", userLogin)
+  mainPage.append(loginForm)
+}
+
+function signUp(e){
+  const signUpForm = document.createElement('form')
+  signUpForm.innerHTML += `
+  <label>Create Username</label>
+  <input type="text">
+  <label>Create Password</label>
+  <input type="text">
+  <input type="submit">`
+  mainPage.append(signUpForm)
+
+  signUpForm.addEventListener("submit", (e) => {
+    e.preventDefault()
+    
+    fetch(`http://localhost:3000/users`, {
+        method: "POST", 
+        headers: {
+            "Content-type": "application/json", 
+            "Accept": "application/json"
+        }, 
+        body: JSON.stringify({
+          "username": e.target.children[1].value,
+          "password": e.target.children[3].value,
+
+        })
+    })
+    .then(res => res.json())
+    .then(
+      renderCrypto(),
+      alert(`Thanks for signing up ${e.target.children[1].value}`)
+    )
+  })
+}  
+
+function userLogin(e){
+  e.preventDefault()
+  const username = e.target.children[1].value
+  const password = e.target.children[3].value
+
+  fetch(`http://localhost:3000/users?name=${username}&password=${password}`)
+  .then(res => res.json())
+  .then(data => {
+      if(data.length === 0){
+          alert('Incorrect Username or Password')
+      } else {
+          renderCrypto()
+      }
+  })
+}
+loginPage()
+
