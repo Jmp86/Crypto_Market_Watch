@@ -19,6 +19,21 @@
       "username": "Lambeau",
       "password": "Treatos",
       "id": 4
+    },
+    {
+      "username": "Jordan",
+      "password": "Illinois",
+      "id": 5
+    },
+    {
+      "username": "Niki",
+      "password": "Rockford",
+      "id": 6
+    },
+    {
+      "username": "Brad",
+      "password": "Appraiser",
+      "id": 7
     }
   ]
 }

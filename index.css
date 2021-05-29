@@ -1,5 +1,4 @@
 body{
-    background: url("https://www.1point21gws.com/insights/wp-content/uploads/2018/12/crynew3.jpg");
     min-height: 500px;
     background-attachment: fixed;
     background-position: center;
@@ -9,7 +8,11 @@ body{
 
 h1 {
   text-align: center;
-  color: black;  
+  font-size: 3.5em;
+  letter-spacing: -1px;
+  background-color: rgba(0, 0, 0, 0.589);
+  color: white;
+  font-family: 'Courier New', Courier, monospace;
 }
 
 h2, p {
@@ -75,14 +78,22 @@ h2, p {
 
   form {
     text-align: center;
-    background-color: rgb(0, 0, 0);
+    background-color: rgba(0, 0, 0, 0.603);
     border: rgba(252, 252, 252, 0.705) solid 1px;
-    padding: 1rem;
-    width: 200px;
+    padding: 2rem;
+    width: 500px;
+    height: 200px;
     display: block;
     margin: auto;
     box-shadow: 3px 4px black;
     block-size: fit-content;
     border-radius: 10px;
     color: whitesmoke;
+  }
+
+  input[type=text] {
+    width: 100%;
+    padding: 6px 10px;
+    margin: 4px 0;
+    box-sizing: border-box;
   }

@@ -2,28 +2,30 @@ const BASE_URL = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd
 
 const mainPage = document.getElementById('main')
 const selectedCrypto = document.getElementById('crypto')
-
+const divTag = document.getElementById('logout')
 
 function renderCrypto() {
   mainPage.innerHTML = ''
+  divTag.innerHTML = ''
   fetch(BASE_URL)
   .then(res => res.json())
   .then((crypto) => {
+    logOut()
     crypto.forEach((coin) => {
     createTile(coin)
   })
 })
+document.body.style.backgroundImage = "url('http://prod-upp-image-read.ft.com/0fcf7cf8-3fb5-11e7-9d56-25f963e998b2')"
 }
 
 
 function createTile(tile) {
-    const newTile = document.createElement("div")
+    const newTile = document.createElement('div')
     const hTag = document.createElement('h2')
     const pTag = document.createElement('p')
     const imgTag = document.createElement('img')
     const aTag = document.createElement('a')
     aTag.classList.add('click-tile')
-    newTile.classList.add('tile')
     imgTag.classList.add('logo')
     aTag.href = '#'
     imgTag.src = tile.image
@@ -42,13 +44,12 @@ function cryptoSelect(select) {
     .then(res => res.json())
     .then((crypto) => {
       moreInfo(select)
-      console.log(select)
   }) 
 }
 
 function moreInfo (info) {
   mainPage.innerHTML = ''
-  const singleTile = document.createElement("div")
+  const singleTile = document.createElement('div')
   const hTag = document.createElement('h2')
   const pTag = document.createElement('p')
   const imgTag = document.createElement('img')
@@ -66,45 +67,51 @@ function moreInfo (info) {
     selectedCrypto.innerHTML = ''
     renderCrypto()
   })
+  document.body.style.backgroundImage = "url('https://blog.binary.com/content/images/size/w2000/2017/05/Ethereum-homestead-background-10.jpg')"
   singleTile.append(hTag, imgTag, pTag, selectedCrypto, btnTag)
   mainPage.append(singleTile)
 }
 
 function listInfo (list){
-  const li = document.createElement("li")
+  const li = document.createElement('li')
   li.classList.add('details')
   li.innerText = list
   selectedCrypto.appendChild(li)
 }
 
 function loginPage(){
-  mainPage.innerHTML = ""
+  mainPage.innerHTML = ''
+  divTag.innerHTML = ''
   signUp()
   const loginForm = document.createElement('form')
   loginForm.innerHTML += `
   <h2>Log In</h2>
-  <label>Username</label>
+  <label>Username:</label>
   <input type="text">
-  <label>Password</label>
+  <br>
+  <label>Password:</label>
   <input type="text">
+  <br>
   <input type="submit">`
-
-  loginForm.addEventListener("submit", userLogin)
+  document.body.style.backgroundImage = "url('https://static.coindesk.com/wp-content/uploads/2018/08/etcrbcb-scaled.jpg')"
+  loginForm.addEventListener('submit', userLogin)
   mainPage.append(loginForm)
 }
 
-function signUp(e){
+function signUp(){
   const signUpForm = document.createElement('form')
   signUpForm.innerHTML += `
   <h2>Sign Up</h2>
-  <label>Create Username</label>
+  <label>Create Username:</label>
   <input type="text">
-  <label>Create Password</label>
+  <br>
+  <label>Create Password:</label>
   <input type="text">
+  <br>
   <input type="submit">`
   mainPage.append(signUpForm)
 
-  signUpForm.addEventListener("submit", (e) => {
+  signUpForm.addEventListener('submit', (e) => {
     e.preventDefault()
     
     fetch(`http://localhost:3000/users`, {
@@ -115,14 +122,15 @@ function signUp(e){
         }, 
         body: JSON.stringify({
           "username": e.target.children[2].value,
-          "password": e.target.children[4].value,
+          "password": e.target.children[5].value,
 
         })
     })
     .then(res => res.json())
     .then(
+      logOut(),
       renderCrypto(),
-      alert(`Thanks for signing up ${e.target.children[1].value}`)
+      alert(`Thanks for signing up ${e.target.children[2].value}`)
     )
   })
 }  
@@ -130,7 +138,7 @@ function signUp(e){
 function userLogin(e){
   e.preventDefault()
   const username = e.target.children[2].value
-  const password = e.target.children[4].value
+  const password = e.target.children[5].value
 
   fetch(`http://localhost:3000/users?name=${username}&password=${password}`)
   .then(res => res.json())
@@ -142,5 +150,15 @@ function userLogin(e){
       }
   })
 }
+
+function logOut (){
+  const btnTag = document.createElement('button')
+  btnTag.innerText = 'Log Out'
+  btnTag.addEventListener('click', (e) => {
+    loginPage()
+  })
+  divTag.appendChild(btnTag)
+}
+
 loginPage()
 
