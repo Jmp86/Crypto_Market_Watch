@@ -15,7 +15,8 @@ Open index.html
 
 ```
 ## Visuals
-/Users/JustinRachel/Development/Code/Mod1/js-project/Screen Shot 2021-05-28 at 5.24.15 PM.png
+
+<img src ="/Users/JustinRachel/Development/Code/Mod1/js-project/Screen Shot 2021-05-28 at 5.24.15 PM.png">
 
 ## Usage
 
