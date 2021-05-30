@@ -82,6 +82,7 @@ function listInfo (list){
 function loginPage(){
   mainPage.innerHTML = ''
   divTag.innerHTML = ''
+  selectedCrypto.innerHTML = ''
   signUp()
   const loginForm = document.createElement('form')
   loginForm.innerHTML += `

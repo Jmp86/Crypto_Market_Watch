@@ -6,7 +6,7 @@ cryptocurrency.
 
 ## Installation
 
-Fork and clone repo into your local environment. Open directory of cloned repo. 
+Fork and clone repo into your local environment. Navigate to directory of cloned repo. 
 
 ```
 npm install -g json-server 
