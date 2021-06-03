@@ -34,6 +34,21 @@
       "username": "Brad",
       "password": "Appraiser",
       "id": 7
+    },
+    {
+      "username": "Megan",
+      "password": "Flatiron",
+      "id": 8
+    },
+    {
+      "username": "Megan",
+      "password": "Flatiron",
+      "id": 9
+    },
+    {
+      "username": "Haana",
+      "password": "Instuctor",
+      "id": 10
     }
   ]
 }

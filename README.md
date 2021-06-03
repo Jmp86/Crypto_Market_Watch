@@ -13,6 +13,8 @@ npm install -g json-server
 
 Open index.html
 
+json-server --watch db.json
+
 ```
 ## Visuals
 

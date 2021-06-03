@@ -1,3 +1,5 @@
+document.addEventListener("DOMContentLoaded", () => {
+
 const BASE_URL = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd"
 
 const mainPage = document.getElementById('main')
@@ -12,6 +14,7 @@ function renderCrypto() {
   .then((crypto) => {
     logOut()
     crypto.forEach((coin) => {
+      // console.log(coin)
     createTile(coin)
   })
 })
@@ -43,6 +46,7 @@ function cryptoSelect(select) {
     fetch(BASE_URL)
     .then(res => res.json())
     .then((crypto) => {
+      console.log(select)
       moreInfo(select)
   }) 
 }
@@ -114,7 +118,7 @@ function signUp(){
 
   signUpForm.addEventListener('submit', (e) => {
     e.preventDefault()
-    
+    // console.log(e.target)
     fetch(`http://localhost:3000/users`, {
         method: "POST", 
         headers: {
@@ -163,3 +167,4 @@ function logOut (){
 
 loginPage()
 
+})
