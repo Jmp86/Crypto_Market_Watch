@@ -1,5 +1,3 @@
-document.addEventListener("DOMContentLoaded", () => {
-
 const BASE_URL = "https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd"
 
 const mainPage = document.getElementById('main')
@@ -13,7 +11,16 @@ function renderCrypto() {
   .then(res => res.json())
   .then((crypto) => {
     logOut()
+    crypto.sort(function(a, b) {
+      console.log(a.id)
+      if (a.id < b.id) {
+        return -1
+      } if (a.id > b.id){
+        return 1 
+      }
+    })
     crypto.forEach((coin) => {
+
       // console.log(coin)
     createTile(coin)
   })
@@ -132,11 +139,11 @@ function signUp(){
         })
     })
     .then(res => res.json())
-    .then(
-      logOut(),
-      renderCrypto(),
-      alert(`Thanks for signing up ${e.target.children[2].value}`)
-    )
+    
+    logOut(),
+    renderCrypto(),
+    alert(`Thanks for signing up ${e.target.children[2].value}`)
+
   })
 }  
 
@@ -166,5 +173,3 @@ function logOut (){
 }
 
 loginPage()
-
-})

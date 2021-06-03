@@ -49,6 +49,11 @@
       "username": "Haana",
       "password": "Instuctor",
       "id": 10
+    },
+    {
+      "username": "Rachel",
+      "password": "Jasper",
+      "id": 11
     }
   ]
 }
